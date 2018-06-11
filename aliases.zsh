@@ -15,3 +15,4 @@ alias cake="bin/cake"
 alias py=python
 
 alias rel="source ~/.zshrc"
+alias op='xdg-open &>/dev/null'
