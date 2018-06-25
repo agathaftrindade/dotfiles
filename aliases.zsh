@@ -1,3 +1,5 @@
+alias ealias="vi ~/.zsh/aliases.zsh && rel"
+
 alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -12,7 +14,9 @@ alias cm='mkdir -p -- "$1" && cd -P -- "$1"'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias cake="bin/cake"
-alias py=python
+alias py="python"
 
 alias rel="source ~/.zshrc"
 alias op='xdg-open &>/dev/null'
+alias zyp='sudo zypper'
+alias p="echo "
