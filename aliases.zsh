@@ -20,3 +20,4 @@ alias rel="source ~/.zshrc"
 alias op='xdg-open &>/dev/null'
 alias zyp='sudo zypper'
 alias p="echo "
+alias ht="htop"
