@@ -319,7 +319,7 @@ you should place your code here."
   ;;display time in powerline
 
   (spaceline-define-segment datetime
-    (shell-command-to-string "echo -n $(date '+%a %d %b %I:%M%p')"))
+    (shell-command-to-string "echo -n $(date '+%a %d %b %H:%M')"))
   (spaceline-spacemacs-theme 'datetime)
 
   (setq powerline-default-separator 'nil)
