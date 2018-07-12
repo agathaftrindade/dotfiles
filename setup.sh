@@ -6,13 +6,15 @@ if ! [ -x "$(command -v zsh)" ]; then
 fi
 
 # Set zsh as default shell
-#chsh -s $(which zsh)
+chsh -s $(which zsh)
 
 # Install ohmyzsh
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 #Install Spacemacs
-#git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+if [ ! -d "~/.emacs.d" ]; then
+  git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+fi
 
 function safe_copy {
   [ -f $HOME/$1 ] && mv $HOME/$1 "$HOME/$1.bk$(date +%Y%m%d%H%M%S)"
