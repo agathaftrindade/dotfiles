@@ -22,3 +22,4 @@ alias op='xdg-open &>/dev/null'
 alias zyp='sudo zypper'
 alias p="echo "
 alias ht="htop"
+alias untar="tar -xf "
