@@ -1,8 +1,23 @@
 #!/usr/bin/env bash
 
-#TODO Install zsh, omz if not exists
-#TODO Install Emacs, Spacemacs if not exists
+if ! [ -x "$(command -v zsh)" ]; then
+  echo 'Error: please install zsh first.' >&2
+  exit 1
+fi
 
-SPACEMACS_PATH=$HOME/.spacemacs
-[ -f $SPACEMACS_PATH ] && mv $SPACEMACS_PATH "$SPACEMACS_PATH".bk
-ln -s $HOME/.zsh/.spacemacs $SPACEMACS_PATH
+# Set zsh as default shell
+#chsh -s $(which zsh)
+
+# Install ohmyzsh
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+#Install Spacemacs
+#git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+function safe_copy {
+  [ -f $HOME/$1 ] && mv $HOME/$1 "$HOME/$1.bk$(date +%Y%m%d%H%M%S)"
+  ln -s $HOME/dot-files/$1 $HOME/$1
+}
+
+safe_copy .spacemacs
+safe_copy .zshrc

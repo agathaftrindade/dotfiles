@@ -1,3 +1,3 @@
-source "$HOME/.zsh/themes-plugins.zsh"
-source "$HOME/.zsh/zsh.zsh"
-source "$HOME/.zsh/aliases.zsh"
+source "$HOME/dot-files/themes-plugins.zsh"
+source "$HOME/dot-files/zsh.zsh"
+source "$HOME/dot-files/aliases.zsh"

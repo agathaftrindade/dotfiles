@@ -1,4 +1,3 @@
-alias ealias="vi ~/.zsh/aliases.zsh && rel"
 
 alias ll='ls -alhF'
 alias la='ls -A'
@@ -8,6 +7,8 @@ alias path='echo $PATH | sed -e "s/:/\n/g"'
 
 alias UNFUCK_WIFI='sudo rmmod rtl8723ae && sudo modprobe rtl8723ae'
 alias cm='mkdir -p -- "$1" && cd -P -- "$1"'
+
+alias ealias="vi ~/dot-files/aliases.zsh && rel"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
