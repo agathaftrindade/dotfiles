@@ -1,13 +1,14 @@
 
 alias ll='ls -alhF'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -CFA'
 alias diskspace="du -S | sort -n -r | less"
 alias path='echo $PATH | sed -e "s/:/\n/g"'
 
 alias UNFUCK_WIFI='sudo rmmod rtl8723ae && sudo modprobe rtl8723ae'
 alias cm='mkdir -p -- "$1" && cd -P -- "$1"'
 
+alias dotf="~/dot-files"
 alias ealias="vi ~/dot-files/aliases.zsh && rel"
 
 # Add an "alert" alias for long running commands.  Use like so:

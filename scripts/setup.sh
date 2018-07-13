@@ -29,3 +29,4 @@ safe_link .spacemacs
 safe_link .zshrc
 safe_link .config/i3
 safe_link .config/i3blocks
+
