@@ -36,7 +36,7 @@
 ###############################################################################
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-export ZSH_CUSTOM=~/dotfiles/custom
+export ZSH_CUSTOM=~/dotfiles/z/custom
 
 
 # Uncomment the following line if you want to disable marking untracked files
