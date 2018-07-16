@@ -1,1 +1,2 @@
-localectl set-x11-keymap "" "" "" "ctrl:nocaps"                                                                         rainsong@peridot
+#/bin/env sh
+localectl set-x11-keymap "" "" "" "ctrl:nocaps"
