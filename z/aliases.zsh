@@ -2,10 +2,11 @@
 alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CFA'
+alias p="echo "
+alias s="sudo"
 alias diskspace="du -S | sort -n -r | less"
 alias path='echo $PATH | sed -e "s/:/\n/g"'
 alias op='xdg-open &>/dev/null'
-alias p="echo "
 alias untar="tar -xf "
 
 alias UNFUCK_WIFI='sudo rmmod rtl8723ae && sudo modprobe rtl8723ae'
