@@ -1,0 +1,41 @@
+# Basic tools
+curl
+wget
+openssh
+gzip
+zip
+unzip
+vim
+acpi
+zsh
+
+# Networking
+networkmanager
+network-manager-applet
+
+# Useful
+htop
+vim
+neofetch
+
+# GUI
+xorg-server
+xorg-xinit
+xorg-xinput
+xorg-xrandr
+i3-gaps
+i3blocks
+i3lock
+dmenu
+feh
+arandr
+
+# Sound
+pulseaudio
+pulseaudio-alsa
+alsa-utils
+
+# Apps
+emacs
+firefox
+ranger
