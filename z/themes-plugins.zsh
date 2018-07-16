@@ -5,6 +5,6 @@ plugins=(
   dotenv
   git
   jsontools
-  yarn
+#  yarn
   web-search
 )
