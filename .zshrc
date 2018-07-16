@@ -1,2 +1,1 @@
-source $HOME/dot-files/index.zsh
-alias vi=vim
+source $HOME/dotfiles/z/index.zsh

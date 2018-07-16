@@ -1,0 +1,2 @@
+$HOME/.fehbg
+i3

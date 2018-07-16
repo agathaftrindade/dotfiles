@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+run(){
+    echo pacman "$@"
+    sudo pacman "$@"
+}
+
+
+usage(){
+    cat <<__EOF__
+Simple Pacman Wrapper
+usage:  pac COMMAND [OPTIONS]
+    COMMANDS:
+        install
+        list-installed
+        help
+    OPTIONS
+        see pacman(8)
+__EOF__
+
+    [ "$1" == "help" ] && exit 0 || exit 1
+}
+
+
+command=$1
+shift
+case $command in
+    install)
+        run -S "$@"
+        ;;
+    update)
+        run -Syu "$@"
+        ;;
+    *)
+        usage
+        ;;
+esac
