@@ -37,6 +37,7 @@ safe_cp .zshenv
 safe_cp .xinitrc
 safe_cp .fehbg
 safe_cp bin/pac
+safe_cp bin/screenlock
 safe_link .spacemacs
 safe_link .zshrc
 safe_link .config/i3

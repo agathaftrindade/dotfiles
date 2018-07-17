@@ -3,13 +3,18 @@
 #
 
 #---- Default Applications ----#
-set $term --no-startup-id st
 #set $term --no-startup-id i3-sensible-terminal
+set $term i3-sensible-terminal
+set $web firefox
+set $files st -e ranger
+set $emacs emacs
+set $multimonitor arandr
+
 set $shutdown sudo shutdown -h now
 set $reboot sudo reboot
 set $netrefresh --no-startup-id sudo systemctl restart NetworkManager
 set $hibernate sudo systemctl suspend
-
+set $lockscreen --no-startup-id screenlock
 
 set $mod Mod4
 
@@ -31,7 +36,7 @@ bindsym XF86MonBrightnessUp exec echo $((200 + $(cat /sys/class/backlight/intel_
 bindsym XF86MonBrightnessDown exec echo $(($(cat /sys/class/backlight/intel_backlight/brightness) - 200)) |sudo tee /sys/class/backlight/intel_backlight/brightness
 
 
-#---- Start applications ----#
+#---- Autostart applications ----#
 
 #exec --no-startup-id nm-applet
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -83,11 +88,6 @@ set $transparent		#00000000
 
 #---- Keybindings ----#
 
-## Applications
-
-# start a terminal
-bindsym $mod+Return exec $term
-bindsym $mod+F2 exec arandr
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -147,10 +147,10 @@ bindsym $mod+Shift+a focus child
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you rely want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+F12 exec $lockscreen
+bindsym $mod+Shift+F12 exec "i3-nagbar -t warning -m 'Do you rely want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym $mod+z			      gaps inner current plus 5
 bindsym $mod+x			      gaps inner current minus 5
@@ -196,9 +196,16 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 
-# start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# Applications
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+w exec $web
+bindsym $mod+Shift+e exec $files
+bindsym $mod+Shift+d exec $emacs
+bindsym $mod+Shift+i exec "$term -e htop"
+bindsym $mod+F3 exec $multimonitor
 
 
 # resize window (you can also use the mouse for that)
