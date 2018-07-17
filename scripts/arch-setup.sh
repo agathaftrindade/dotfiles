@@ -7,3 +7,6 @@ cat ~/dotfiles/scripts/pacman-list | \
 	sed '/^\#.*$/d' | 
 	sudo pacman -S - 
 
+~/dotfiles/scripts/install-firacode.sh
+~/dotfiles/scripts/install-st.sh
+

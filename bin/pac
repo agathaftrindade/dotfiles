@@ -9,12 +9,15 @@ run(){
 usage(){
     cat <<__EOF__
 Simple Pacman Wrapper
-usage:  pac COMMAND [OPTIONS]
+usage: pac COMMAND [OPTIONS] [TARGET]
     COMMANDS:
         install
-        list-installed
+        update
+        list
+	info
         help
     OPTIONS
+    TARGET
         see pacman(8)
 __EOF__
 
@@ -30,6 +33,12 @@ case $command in
         ;;
     update)
         run -Syu "$@"
+        ;;
+    info)
+        run -Si "$@"
+        ;;
+    list)
+        run -Q "$@"
         ;;
     *)
         usage

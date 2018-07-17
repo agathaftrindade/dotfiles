@@ -30,6 +30,10 @@ dmenu
 feh
 arandr
 
+# Fonts
+otf-fira-mono
+ttf-dejavu
+
 # Sound
 pulseaudio
 pulseaudio-alsa
