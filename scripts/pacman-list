@@ -38,6 +38,8 @@ ttf-dejavu
 pulseaudio
 pulseaudio-alsa
 alsa-utils
+pamixer
+playerctl
 
 # Apps
 emacs
