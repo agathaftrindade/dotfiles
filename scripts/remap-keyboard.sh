@@ -1,2 +1,15 @@
 #/bin/env sh
-localectl set-x11-keymap "" "" "" "ctrl:nocaps"
+localectl set-x11-keymap "" "us" "" "ctrl:nocaps"
+
+## Written by systemd-localed(8), read by systemd-localed and Xorg. It's
+# probably wise not to edit this file manually. Use localectl(1) to
+# instruct systemd-localed to update it.
+
+#ABNT
+#Section "InputClass"
+#    Identifier "system-keyboard"
+#     MatchIsKeyboard "on"
+#     Option "XkbLayout" "br"
+#     Option "XkbVariant" "abnt2"
+#     Option "XkbOptions" "ctrl:nocaps"
+#EndSection

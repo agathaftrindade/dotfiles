@@ -8,6 +8,13 @@ unzip
 vim
 acpi
 zsh
+libpulse 
+alsa-lib 
+jsoncpp 
+wireless_tools 
+cmake
+
+
 
 # Networking
 networkmanager
