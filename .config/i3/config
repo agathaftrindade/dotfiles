@@ -31,11 +31,6 @@ gaps inner $gapsize
 gaps outer $gapsize
 
 
-#FIXME Brightness buttons
-bindsym XF86MonBrightnessUp exec echo $((200 + $(cat /sys/class/backlight/intel_backlight/brightness))) |sudo tee /sys/class/backlight/intel_backlight/brightness
-bindsym XF86MonBrightnessDown exec echo $(($(cat /sys/class/backlight/intel_backlight/brightness) - 200)) |sudo tee /sys/class/backlight/intel_backlight/brightness
-
-
 #---- Autostart applications ----#
 
 #exec --no-startup-id nm-applet
@@ -214,6 +209,7 @@ bindsym XF86AudioLowerVolume exec "pamixer -d 5"
 bindsym XF86AudioRaiseVolume exec "pamixer -i 5"
 bindsym XF86AudioMute exec "pamixer --set-volume 0"
 
+# Media Play
 bindsym XF86AudioPlay exec "playerctl play-pause"
 bindsym XF86AudioStop exec "playerctl stop"
 bindsym XF86AudioPrev exec "playerctl previous"
@@ -221,6 +217,11 @@ bindsym XF86AudioNext exec "playerctl next"
 bindsym $mod+i exec "playerctl previous"
 bindsym $mod+o exec "playerctl play-pause"
 bindsym $mod+p exec "playerctl next"
+
+# Brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
 #bindsym $mod+Up focus up
 #bindsym $mod+Shift+Left move left
 #bindsym $mod+Shift+Down move down
