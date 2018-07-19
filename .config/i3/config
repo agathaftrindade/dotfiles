@@ -34,26 +34,25 @@ gaps outer $gapsize
 #---- Autostart applications ----#
 
 #exec --no-startup-id nm-applet
-#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#exec_always --no-startup-id polybar example
 
 #---- Bar ----#
 
-bar {
-    position          top
-    status_command    i3blocks
-    workspace_buttons yes
-    tray_output       primary
-
-    colors {
-        background #00000
-        statusline #ffffff
-
-        focused_workspace  #ffffff #285577
-        active_workspace   #ffffff #333333
-        inactive_workspace #888888 #222222
-        urgent_workspace   #ffffff #900000
-    }
-}
+#bar {
+#    position          top
+#    status_command    i3blocks
+#     workspace_buttons yes
+#     tray_output       primary
+#     colors {
+#        background #00000
+ #       statusline #ffffff
+#        focused_workspace  #ffffff #285577
+#        active_workspace   #ffffff #333333
+#        inactive_workspace #888888 #222222
+#        urgent_workspace   #ffffff #900000
+#    }
+#}
 
 # Xresources colors:
 set_from_resource $darkblack	color0  #000000
