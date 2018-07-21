@@ -93,7 +93,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = i3
 modules-center = 
-modules-right = date powermenu
+modules-right = date
 
 tray-position = right
 tray-padding = 2

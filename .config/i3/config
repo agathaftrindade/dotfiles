@@ -6,7 +6,7 @@
 #set $term --no-startup-id i3-sensible-terminal
 set $term i3-sensible-terminal
 set $web firefox
-set $files st -e ranger
+set $files "$TERMINAL -e ranger"
 set $emacs emacs
 set $multimonitor arandr
 
