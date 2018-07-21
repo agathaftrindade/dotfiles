@@ -14,8 +14,6 @@ jsoncpp
 wireless_tools 
 cmake
 
-
-
 # Networking
 networkmanager
 network-manager-applet
