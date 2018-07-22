@@ -12,11 +12,12 @@ set $multimonitor arandr
 
 set $screenshot "scrot '/tmp/%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/"
 
-set $shutdown sudo shutdown -h now
-set $reboot sudo reboot
+set $shutdown i3-yesno 'Shutdown?' 'sudo shutdown -h now'
+set $reboot i3-yesno 'Reboot?' 'exec reboot'
 set $netrefresh --no-startup-id sudo systemctl restart NetworkManager
 set $hibernate sudo systemctl suspend
 set $lockscreen --no-startup-id screenlock
+set $exitx --no-startup-id i3-yesno 'Exit X?' 'i3-msg exit'
 
 set $mod Mod4
 
@@ -142,11 +143,13 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+a focus child
 
 # reload the configuration file
-bindsym $mod+Shift+F2 reload
-bindsym $mod+F2 restart
+bindsym $mod+F2 reload
+bindsym $mod+Shift+F2 restart
 
-bindsym $mod+F12 exec $lockscreen
-bindsym $mod+Shift+F12 exec "i3-nagbar -t warning -m 'Do you rely want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+F12 exec $shutdown
+bindsym $mod+Shift+F12 exec $reboot
+bindsym $mod+BackSpace exec $lockscreen
+bindsym $mod+Escape exec $exitx
 
 bindsym Print exec $screenshot
 
@@ -200,7 +203,7 @@ bindsym $mod+d exec --no-startup-id "i3-dmenu-desktop --dmenu='dmenu -b -i'"
 # Applications
 bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+Shift+w exec --no-startup-id $web
-bindsym $mod+Shift+r exec --no-startup-id $files
+bindsym $mod+Shift+e exec --no-startup-id $files
 bindsym $mod+Shift+d exec --no-startup-id $emacs
 bindsym $mod+Shift+i exec --no-startup-id "$term -e htop"
 bindsym $mod+F3 exec --no-startup-id $multimonitor
