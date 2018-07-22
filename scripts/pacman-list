@@ -22,6 +22,8 @@ network-manager-applet
 htop
 vim
 neofetch
+xclip
+scrot
 
 # GUI
 xorg-server

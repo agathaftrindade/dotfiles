@@ -10,6 +10,8 @@ set $files "$TERMINAL -e ranger"
 set $emacs emacs
 set $multimonitor arandr
 
+set $screenshot "scrot '/tmp/%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/"
+
 set $shutdown sudo shutdown -h now
 set $reboot sudo reboot
 set $netrefresh --no-startup-id sudo systemctl restart NetworkManager
@@ -34,7 +36,9 @@ gaps outer $gapsize
 #---- Autostart applications ----#
 
 #exec --no-startup-id nm-applet
+exec_always --no-startup-id "killall -q dunst; dunst"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id $HOME/.fehbg
 #exec_always --no-startup-id polybar example
 
 #---- Bar ----#
@@ -134,16 +138,17 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
-
 # focus the child container
 bindsym $mod+Shift+a focus child
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+F2 reload
+bindsym $mod+F2 restart
 
 bindsym $mod+F12 exec $lockscreen
 bindsym $mod+Shift+F12 exec "i3-nagbar -t warning -m 'Do you rely want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym Print exec $screenshot
 
 bindsym $mod+z			      gaps inner current plus 5
 bindsym $mod+x			      gaps inner current minus 5
@@ -190,15 +195,15 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 
 #bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id "i3-dmenu-desktop --dmenu='dmenu -b -i'"
 
 # Applications
-bindsym $mod+Return exec $term
-bindsym $mod+Shift+w exec $web
-bindsym $mod+Shift+e exec $files
-bindsym $mod+Shift+d exec $emacs
-bindsym $mod+Shift+i exec "$term -e htop"
-bindsym $mod+F3 exec $multimonitor
+bindsym $mod+Return exec --no-startup-id $term
+bindsym $mod+Shift+w exec --no-startup-id $web
+bindsym $mod+Shift+r exec --no-startup-id $files
+bindsym $mod+Shift+d exec --no-startup-id $emacs
+bindsym $mod+Shift+i exec --no-startup-id "$term -e htop"
+bindsym $mod+F3 exec --no-startup-id $multimonitor
 
 # Volume control
 bindsym $mod+minus exec "pamixer -d 5"

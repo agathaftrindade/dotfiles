@@ -14,7 +14,7 @@ alias cm='mkdir -p -- "$1" && cd -P -- "$1"'
 
 alias dotf="~/dotfiles"
 alias ealias="vi ~/dotfiles/z/aliases.zsh && rel"
-alias rel="source ~/.zshrc"
+alias rel="source ~/.zshrc && rehash"
 
 alias i3conf="vim ~/.config/i3/config"
 
