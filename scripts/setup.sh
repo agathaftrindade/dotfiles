@@ -43,4 +43,6 @@ safe_link .zshrc
 safe_link .config/i3
 safe_link .config/i3blocks
 safe_link .config/polybar
+safe_link .config/dunst
 safe_link .config/ranger
+safe_link .config/compton.conf
