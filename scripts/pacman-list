@@ -36,6 +36,7 @@ i3lock
 dmenu
 feh
 arandr
+compton
 
 # Fonts
 otf-fira-mono
@@ -52,3 +53,4 @@ playerctl
 emacs
 firefox
 ranger
+mupdf
