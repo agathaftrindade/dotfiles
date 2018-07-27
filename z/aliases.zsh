@@ -8,6 +8,7 @@ alias diskspace="du -S | sort -n -r | less"
 alias path='echo $PATH | sed -e "s/:/\n/g"'
 alias op='xdg-open &>/dev/null'
 alias untar="tar -xf "
+alias pingg="ping google.com"
 
 alias UNFUCK_WIFI='sudo rmmod rtl8723ae && sudo modprobe rtl8723ae'
 alias cm='mkdir -p -- "$1" && cd -P -- "$1"'

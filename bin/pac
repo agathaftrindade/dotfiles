@@ -2,6 +2,11 @@
 
 run(){
     echo pacman "$@"
+    pacman "$@"
+}
+
+runs(){
+    echo sudo pacman "$@"
     sudo pacman "$@"
 }
 
@@ -14,6 +19,7 @@ usage: pac COMMAND [OPTIONS] [TARGET]
         install
         update
         list
+        remove
 	info
         help
     OPTIONS
@@ -29,13 +35,19 @@ command=$1
 shift
 case $command in
     install)
-        run -S "$@"
+        runs -S "$@"
         ;;
     update)
         run -Syu "$@"
         ;;
+    remove)
+        runs -Rs "$@"
+        ;;
     info)
         run -Si "$@"
+        ;;
+    search)
+        run -Ss "$@"
         ;;
     list)
         run -Q "$@"
