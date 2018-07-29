@@ -38,8 +38,8 @@ border-color = #00000000
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 2
+module-margin-right = 0
 
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
@@ -50,12 +50,12 @@ modules-center =
 modules-right = pulseaudio xbacklight xkeyboard cpu memory temperature wlan eth battery date powermenu
 
 tray-position = right
-tray-padding = 2
+tray-padding = 0
 ;tray-transparent = true
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
 ;override-redirect = true
 
@@ -95,8 +95,6 @@ modules-left = i3
 modules-center = 
 modules-right = date
 
-tray-position = right
-tray-padding = 2
 cursor-click = pointer
 cursor-scroll = ns-resize
 
@@ -235,7 +233,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp3s0
+interface = ${env:ETH:wlp0s20u2}
 interval = 3.0
 
 format-connected-underline = #55aa55

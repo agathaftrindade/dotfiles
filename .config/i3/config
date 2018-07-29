@@ -14,7 +14,7 @@ set $multimonitor arandr
 set $screenshot "i3-scrot -x"
 set $screenshotselect "i3-scrot -x -s"
     
-set $shutdown i3-yesno 'Shutdown?' 'sudo shutdown -h now'
+set $shutdown i3-yesno 'Shutdown?' 'exec shutdown -h now'
 set $reboot i3-yesno 'Reboot?' 'exec reboot'
 set $netrefresh --no-startup-id sudo systemctl restart NetworkManager
 set $hibernate sudo systemctl suspend
@@ -29,7 +29,7 @@ gaps outer $gapsize
 
 #---- Autostart applications ----#
 
-#exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 exec_always --no-startup-id "killall -q dunst; dunst"
 exec_always --no-startup-id "killall -q compton; compton"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
