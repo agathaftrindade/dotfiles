@@ -5,9 +5,10 @@ set $mod Mod4
 
 #---- Default Applications ----#
 #set $term --no-startup-id i3-sensible-terminal
-set $term i3-sensible-terminal
+set $term "$TERMINAL"
 set $web firefox
 set $files "$TERMINAL -e ranger"
+set $rss "$TERMINAL -e newsboat"
 set $emacs emacs
 set $multimonitor arandr
 
@@ -154,6 +155,7 @@ bindsym $mod+d exec --no-startup-id "i3-dmenu-desktop --dmenu='dmenu -b -i'"
 bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+Shift+w exec --no-startup-id $web
 bindsym $mod+Shift+r exec --no-startup-id $files
+bindsym $mod+Shift+n exec --no-startup-id $rss
 bindsym $mod+Shift+d exec --no-startup-id $emacs
 bindsym $mod+Shift+i exec --no-startup-id "$term -e htop"
 bindsym $mod+F3 exec --no-startup-id $multimonitor
@@ -184,6 +186,10 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 #bindsym $mod+Shift+Down move down
 #bindsym $mod+Shift+Up move up
 #bindsym $mod+Shift+Right move right
+bindsym $mod+Ctrl+h resize shrink width 10 px or 10 ppt
+bindsym $mod+Ctrl+j resize grow height 10 px or 10 ppt
+bindsym $mod+Ctrl+k resize shrink height 10 px or 10 ppt
+bindsym $mod+Ctrl+l resize grow width 10 px or 10 ppt
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
