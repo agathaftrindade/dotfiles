@@ -41,6 +41,7 @@ compton
 # Fonts
 otf-fira-mono
 ttf-dejavu
+ttf-liberation
 
 # Sound
 pulseaudio
@@ -58,4 +59,4 @@ newsboat
 mpd
 mpv
 youtube-dl
-urlview
+tmux
