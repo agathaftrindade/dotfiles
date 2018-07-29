@@ -47,7 +47,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = i3
 modules-center = 
-modules-right = pulseaudio xbacklight xkeyboard cpu memory temperature wlan eth battery date powermenu
+modules-right = pulseaudio xbacklight xkeyboard cpu memory temperature eth battery date powermenu
 
 tray-position = right
 tray-padding = 0
@@ -211,7 +211,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp7s0
+interface = ${env:ETH:wlp0s20u2}
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>

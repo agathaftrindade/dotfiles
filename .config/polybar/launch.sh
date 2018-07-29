@@ -15,9 +15,9 @@ killall -q polybar
 # Wait until the processes have been shut down
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-MONITOR=$PRIM_MONITOR polybar primary &
+MONITOR=$PRIM_MONITOR ETH="$(ip addr | awk '/state UP/ {print $2}' | sed 's/:$//')" polybar primary &
 for m in $SECND_MONITORS; do
-    MONITOR=$m polybar simple &
+  MONITOR=$m polybar simple &
  #MONITOR=$m polybar primary &
 done
 
