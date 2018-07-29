@@ -45,4 +45,7 @@ safe_link .config/i3blocks
 safe_link .config/polybar
 safe_link .config/dunst
 safe_link .config/ranger
+safe_link .config/newsboat
+safe_link .config/gtk-3.0
+safe_link .config/i3-scrot.conf
 safe_link .config/compton.conf
