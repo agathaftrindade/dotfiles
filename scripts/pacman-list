@@ -38,6 +38,10 @@ feh
 arandr
 compton
 
+#Themes and Icons
+adapta-gtk-theme
+arc-icon-theme
+
 # Fonts
 otf-fira-mono
 ttf-dejavu

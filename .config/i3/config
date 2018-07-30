@@ -230,12 +230,12 @@ for_window [class="^.*"] border pixel 2
 
 #bar {
 #    position          top
-#    status_command    i3blocks
+#    status_command    i3status
 #     workspace_buttons yes
 #     tray_output       primary
 #     colors {
 #        background #00000
- #       statusline #ffffff
+#        statusline #ffffff
 #        focused_workspace  #ffffff #285577
 #        active_workspace   #ffffff #333333
 #        inactive_workspace #888888 #222222
