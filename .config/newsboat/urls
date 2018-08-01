@@ -1,4 +1,16 @@
-https://xkcd.com/atom.xml
+https://www.archlinux.org/feeds/news/ tech
 http://lukesmith.xyz/rss.xml
 https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~Luke Smith (YouTube)"
-https://www.archlinux.org/feeds/news/ "tech"
+
+https://www.reddit.com/r/IWantToLearn/.rss reddit
+https://www.reddit.com/r/IAmA/.rss reddit
+https://www.reddit.com/r/dataisbeautiful/.rss reddit
+https://www.reddit.com/r/listentothis/.rss reddit
+https://www.reddit.com/r/gifs/.rss reddit
+https://www.reddit.com/r/NatureIsFuckingLit/.rss reddit
+
+https://www.wired.com/feed/rss  tech
+https://blog.erratasec.com/feeds/posts/default  tech security
+https://www.reddit.com/r/netsec/.rss reddit security
+
+https://xkcd.com/atom.xml
