@@ -45,13 +45,13 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
 modules-left = i3
-modules-center = 
-modules-right = pulseaudio spacer xbacklight spacer eth spacer xkeyboard spacer battery spacer date spacer2
+modules-center = eth
+modules-right = pulseaudio spacer xbacklight spacer xkeyboard spacer battery spacer date spacer2
 
 tray-position = right
 tray-padding = 0
 ;tray-transparent = true
-;tray-background = #0063ff
+tray-background = #ee0a0a0a
 
 ;wm-restack = bspwm
 wm-restack = i3
@@ -235,7 +235,7 @@ type = internal/network
 interface = ${env:ETH:wlp0s20u2}
 interval = 3.0
 
-format-connected-underline = ${colors.primary}
+format-connected-underline =
 format-connected-prefix = 
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
@@ -271,7 +271,7 @@ format-volume = <label-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
+label-muted = muted
 label-muted-foreground = #666
 
 bar-volume-width = 10
@@ -326,7 +326,7 @@ adapter = ADP1
 full-at = 98
 
 format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${colors.alert}
+format-discharging-underline = ${colors.primary}
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${colors.primary}

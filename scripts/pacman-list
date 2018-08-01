@@ -37,6 +37,10 @@ dmenu
 feh
 arandr
 compton
+xautolock
+
+# Notifications
+dunst
 
 #Themes and Icons
 adapta-gtk-theme
@@ -60,6 +64,7 @@ firefox
 ranger
 mupdf
 newsboat
+calcurse
 mpd
 mpv
 youtube-dl

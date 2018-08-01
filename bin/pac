@@ -38,7 +38,7 @@ case $command in
         runs -S "$@"
         ;;
     update)
-        run -Syu "$@"
+        runs -Syu "$@"
         ;;
     remove)
         runs -Rs "$@"

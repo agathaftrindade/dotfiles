@@ -9,6 +9,8 @@ set $term "$TERMINAL"
 set $web firefox
 set $files "$TERMINAL -e ranger"
 set $rss "$TERMINAL -e newsboat"
+set $htop "$TERMINAL -e htop"
+set $calendar "$TERMINAL -e calcurse"
 set $emacs emacs
 set $multimonitor arandr
 
@@ -31,6 +33,7 @@ gaps outer $gapsize
 #---- Autostart applications ----#
 
 exec --no-startup-id nm-applet
+exec --no-startup-id xautolock -time 15 -locker 'screenlock'
 exec_always --no-startup-id "killall -q dunst; dunst"
 exec_always --no-startup-id "killall -q compton; compton"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -152,13 +155,14 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+d exec --no-startup-id "i3-dmenu-desktop --dmenu='dmenu -b -i'"
 
 # Applications
-bindsym $mod+Return exec --no-startup-id $term
-bindsym $mod+Shift+w exec --no-startup-id $web
-bindsym $mod+Shift+r exec --no-startup-id $files
-bindsym $mod+Shift+n exec --no-startup-id $rss
-bindsym $mod+Shift+d exec --no-startup-id $emacs
-bindsym $mod+Shift+i exec --no-startup-id "$term -e htop"
-bindsym $mod+F3 exec --no-startup-id $multimonitor
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+w exec $web
+bindsym $mod+Shift+r exec $files
+bindsym $mod+Shift+n exec $rss
+bindsym $mod+Shift+d exec $emacs
+bindsym $mod+Shift+i exec $htop
+bindsym $mod+Shift+c exec $calendar
+bindsym $mod+F3 exec $multimonitor
 
 # Volume control
 bindsym $mod+minus exec "pamixer -d 5"
