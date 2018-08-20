@@ -4,6 +4,7 @@ alias la='ls -A'
 alias l='ls -CFA'
 alias p="echo "
 alias s="sudo"
+alias n="nohup "
 alias diskspace="du -S | sort -n -r | less"
 alias path='echo $PATH | sed -e "s/:/\n/g"'
 alias op='xdg-open &>/dev/null'

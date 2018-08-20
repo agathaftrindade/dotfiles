@@ -76,6 +76,9 @@ bindsym $mod+v split h
 # split in vertical orientation
 bindsym $mod+c split v
 
+bindsym $mod+b sticky toggle
+bindsym $mod+Shift+b floating toggle; sticky toggle; exec --no-startup-id bottomleft
+
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
