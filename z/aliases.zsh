@@ -28,6 +28,15 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias vi="vim"
 alias cake="bin/cake"
 alias py="python"
+alias py3="python3"
 
 alias ht="htop"
 alias zyp='sudo zypper'
+
+# Java Dev
+alias liquiup="mvn clean compile liquibase:update"
+alias liquidown="mvn clean compile liquibase:rollback -Dliquibase.rollbackCount=1"
+
+alias svn="git svn"
+
+alias vv="source venv/bin/activate "

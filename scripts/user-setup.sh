@@ -20,7 +20,7 @@ fi
 
 # Install ohmyzsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    $DOTFILES/scripts/install-omz.sh
+    $DOTFILES/scripts/install/install-omz.sh
 fi
 
 # Install Spacemacs
