@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -x
+
+sudo rm /usr/lib/jvm/default-java
+sudo ln -s $1 /usr/lib/jvm/default-java
+echo "Active JVM now is $1"

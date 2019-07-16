@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if ! (set -o noclobber ; echo > /tmp/bg.lock) ; then
+    exit 1  # the lock already exists
+fi
+
+
+while true; do
+  #DISPLAY=:0.0 feh --randomize --bg-fill $1/*
+  #DISPLAY=:0.1 feh --randomize --bg-fill $1/*
+  feh --randomize --bg-fill $1/*
+  sleep $2
+done
