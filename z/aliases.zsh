@@ -29,6 +29,9 @@ alias vi="vim"
 alias cake="bin/cake"
 alias py="python"
 alias py3="python3"
+alias pf="pip freeze > requirements.txt"
+alias pi="pip install -r requirements.txt"
+alias vv="source venv/bin/activate"
 
 alias ht="htop"
 alias zyp='sudo zypper'
@@ -39,4 +42,3 @@ alias liquidown="mvn clean compile liquibase:rollback -Dliquibase.rollbackCount=
 
 alias svn="git svn"
 
-alias vv="source venv/bin/activate "

@@ -297,8 +297,8 @@ values."
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
-   js2-basic-offset 2
-   js-indent-level 2
+   js2-basic-offset 4
+   js-indent-level 4
    ))
 
 (defun dotspacemacs/user-init ()
@@ -327,11 +327,35 @@ you should place your code here."
 
   (setq powerline-default-separator 'nil)
 
+  (setq eclim-eclipse-dirs "~/Apps/eclipse-photon-neo"
+        eclim-executable "eclim"
+        eclimd-executable "~/Apps/eclipse-photon-neo/eclimd")
+
   (spacemacs/set-leader-keys "\\" 'helm-mini)
   (spacemacs/set-leader-keys "\`" 'helm-mini)
-  (spacemacs/set-leader-keys "TAB" 'other-window)
+  (spacemacs/set-leader-keys "TAB" 'spacemacs/alternate-window)
   (spacemacs/set-leader-keys "-" 'spacemacs/alternate-buffer)
+  (setq javascript-indent-level 4) ; javascript-mode
+  (setq js-indent-level 4) ; js-mode
+  (setq-default tab-width 4)
+  (setq indent-tabs-mode t)
+  (setq-default python-indent-offset 4)
 
+  ;; (add-hook 'python-mode-hook (lambda () (setq indent-tabs-mode t)))
+  ;; (add-hook 'python-mode-hook (lambda () (setq standard-indent 4)))
+  (setq-default shell-default-full-span nil)
+  (setq-default spacemacs-show-trailing-whitespace nil)
+  (add-hook 'python-mode-hook (lambda () (setq indent-tabs-mode t)))
+  (add-hook 'python-mode-hook
+            (lambda ()
+              (setq-default indent-tabs-mode t)
+              (setq-local indent-tabs-mode t)
+              (setq-local tab-width 4)
+              (setq-default python-indent 4)
+              ;; (setq-local indent-line-function 'insert-tab)
+              ;; (electric-indent-local-mode -1)
+              )
+  )
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
