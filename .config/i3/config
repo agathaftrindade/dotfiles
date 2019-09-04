@@ -5,13 +5,16 @@ set $mod Mod4
 
 #---- Default Applications ----#
 #set $term --no-startup-id i3-sensible-terminal
-set $term "$TERMINAL"
+set $term "terminator"
 set $web firefox
-set $files "$TERMINAL -e ranger"
-set $rss "$TERMINAL -e newsboat"
-set $htop "$TERMINAL -e htop"
-set $calendar "$TERMINAL -e calcurse"
+set $files "terminator -e ranger"
+set $rss "terminator -e newsboat"
+set $htop "terminator -e htop"
+set $slack "slack"
+set $matrix "terminator -e cmatrix"
+set $calendar "terminator -e calcurse"
 set $emacs emacs
+set $eclipse eclipse
 set $multimonitor arandr
 
 set $screenshot "i3-scrot -x"
@@ -163,8 +166,11 @@ bindsym $mod+Shift+w exec $web
 bindsym $mod+Shift+r exec $files
 bindsym $mod+Shift+n exec $rss
 bindsym $mod+Shift+d exec $emacs
+bindsym $mod+Shift+e exec $eclipse
+bindsym $mod+Shift+m exec $slack
 bindsym $mod+Shift+i exec $htop
 bindsym $mod+Shift+c exec $calendar
+bindsym $mod+Shift+p exec $matrix
 bindsym $mod+F3 exec $multimonitor
 
 # Volume control
