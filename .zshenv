@@ -1,4 +1,4 @@
-export TERM=st
+export TERM=terminator
 export EDITOR=vim
 export TERMINAL=$TERM
 export BROWSER=firefox
