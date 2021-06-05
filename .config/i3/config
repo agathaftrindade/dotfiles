@@ -4,6 +4,8 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
+set $browser chromium
+set $term gnome-terminal
 
 #set $screenshot "i3-scrot -x"
 #set $screenshotselect "i3-scrot -x -s"
@@ -47,14 +49,27 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
-bindsym $mod+KP_Enter exec terminator
+bindsym $mod+Return exec $term
+bindsym $mod+KP_Enter exec $term
+
+# floating terminal
+bindsym $mod+r exec $term --class FXTerm
+
+bindsym $mod+Shift+r exec $term --class FXTerm -- python3
+
+# file manager
+bindsym $mod+Shift+e exec nautilus
 
 # kill focused window
 bindsym $mod+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency -b
+#bindsym $mod+d exec --no-startup-id dmenu_recency -b
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+Shift+d exec --no-startup-id rofi -show run
+
+# launch categorized menu
+bindsym $mod+t exec --no-startup-id rofi -show window
 
 # launch categorized menu
 bindsym $mod+m exec --no-startup-id morc_menu
@@ -76,15 +91,15 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+Shift+w exec $BROWSER
-bindsym $mod+Shift+d exec emacs
-bindsym $mod+F3 exec pcmanfm
+#bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
+bindsym $mod+Shift+w exec $browser
+#bindsym $mod+Shift+d exec emacs
+#bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F3 exec pcmanfm_pkexec
-bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+#bindsym $mod+Shift+F3 exec pcmanfm_pkexec
+#bindsym $mod+F5 exec terminal -e 'mocp'
+#bindsym $mod+t exec --no-startup-id pkill compton
+#bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 #bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot -x
 #bindsym Shift+Print --release exec --no-startup-id i3-scrot -w -x
@@ -119,7 +134,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
-workspace_auto_back_and_forth no
+workspace_auto_back_and_forth yes
 #bindsym $mod+b workspace back_and_forth
 #bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
@@ -133,8 +148,10 @@ bindsym $mod+Shift+x		  gaps inner current set 0; gaps outer current set 0
 
 
 # split orientation
-bindsym $mod+v split h;exec notify-send 'tile horizontally'
-bindsym $mod+c split v;exec notify-send 'tile vertically'
+#bindsym $mod+v split h;exec notify-send 'tile horizontally'
+#bindsym $mod+c split v;exec notify-send 'tile vertically'
+bindsym $mod+v split h
+bindsym $mod+c split v
 #bindsym $mod+q split toggle
 
 # toggle fullscreen mode for the focused container
@@ -258,6 +275,8 @@ for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 
+for_window [class="FXTerm"] floating enable
+
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
@@ -268,7 +287,7 @@ bindsym $mod+F2 reload
 bindsym $mod+Shift+F2 restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+f12 exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
 bindsym $mod+F12 mode "$mode_system"
@@ -276,7 +295,7 @@ set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3exit lock, mode "default"
     bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+#    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
     bindsym h exec --no-startup-id i3exit hibernate, mode "default"
     bindsym r exec --no-startup-id i3exit reboot, mode "default"
@@ -288,7 +307,7 @@ mode "$mode_system" {
 }
 
 # Resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"
+#bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
         # Pressing left will shrink the window’s width.
@@ -315,7 +334,7 @@ mode "resize" {
 bindsym $mod+F11 exec --no-startup-id blurlock
 
 # Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id ~/.screenlayout/a.sh
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 
@@ -327,7 +346,7 @@ exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
-exec --no-startup-id redshift
+#exec --no-startup-id redshift
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
