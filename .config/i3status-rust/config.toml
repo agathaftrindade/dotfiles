@@ -1,0 +1,63 @@
+
+[theme]
+name = "modern"
+#[theme.overrides]
+#idle_bg = "#123456"
+#idle_fg = "#abcdef"
+
+[icons]
+name = "awesome"
+[icons.overrides]
+disk_drive = ""
+
+[[block]]
+block = "cpu"
+interval = 1
+format = "{barchart}"
+info = 50
+warning = 70
+critical = 90
+
+[[block]]
+block = "load"
+interval = 1
+info = 1.0
+warning = 2.0
+critical = 3.0
+format = "{1m}"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used; G}"
+format_swap = "{swap_used; G} / {swap_total; G}"
+
+[[block]]
+block = "disk_space"
+path = "/"
+format = "{icon} {available}"
+info_type = "available"
+unit = "GB"
+interval = 20
+
+# [[block]]
+# block = "toggle"
+# # text = "vpn"
+# command_state = " "
+# command_on = ""
+# command_off = ""
+# interval = 5
+
+[[block]]
+block = "sound"
+format = "{volume}"
+
+[[block]]
+block = "keyboard_layout"
+driver = "setxkbmap"
+interval = 15
+
+[[block]]
+block = "time"
+interval = 1
+format = "%d.%m. %R"

@@ -1,10 +1,10 @@
 ZSH_THEME="my-own-theme"
 
 plugins=(
-  aws
+  #aws
   dotenv
   git
   jsontools
 #  yarn
-  web-search
+  #web-search
 )

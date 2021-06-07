@@ -1,0 +1,8 @@
+/** Basic config file **/
+
+
+configuration {
+  theme     :         "~/.config/rofi/themes/style_default";
+  show-icons:         true;
+  icon-theme:         "Papirus";
+}
