@@ -40,13 +40,41 @@ info_type = "available"
 unit = "GB"
 interval = 20
 
-# [[block]]
-# block = "toggle"
-# # text = "vpn"
-# command_state = " "
-# command_on = ""
-# command_off = ""
-# interval = 5
+#[[block]]
+#block = "custom"
+#command = "clamp status"
+#interval = 5
+
+#[[block]]
+#block = "custom"
+#command = "echo 🐋"
+#interval = 5
+
+[[block]]
+block = "custom"
+command = "clamp status"
+interval = 1
+
+[[block]]
+block = "custom"
+command = "echo 🌐 dwn"
+interval = 1
+
+#[[block]]
+#block = "toggle"
+#text = "env"
+#command_state = " "
+#command_on = ""
+#command_off = ""
+#interval = 5
+
+#[[block]]
+#block = "toggle"
+#text = "❄"
+#command_state = " "
+#command_on = ""
+#command_off = ""
+#interval = 5
 
 [[block]]
 block = "sound"

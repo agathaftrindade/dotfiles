@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+
+import sys
+import subprocess
+import argparse
+
+def check_status(project_path):
+    cns = get_containers(project_path)
+
+    if len(cns) == 0:
+        return False
+
+    all_ok = all([
+        any(c['state'] == 'Up' for c in service_pods) for service_pods in cns.values()
+    ])
+    return all_ok
+
+def get_containers(project_path):
+    command = subprocess.run(['docker-compose', f'-f{project_path}', 'ps'], capture_output=True)
+    if command.stderr:
+        raise Exception(command.stderr)
+    
+    lines = [bin_line.decode('utf-8') for bin_line in command.stdout.splitlines()]
+
+    containers_by_service = {}
+    for line in lines[2:]:
+        splitted = line.split()
+        project, service, pod_n = splitted[0].split('_')
+        containers_by_service[service] = containers_by_service.get(service, [])
+        containers_by_service[service].append({
+            'project': project,
+            'service': service,
+            'pod_n': pod_n,
+            'state': splitted[3],
+            'ports': splitted[4].split(',')
+        })
+    return containers_by_service
+        
+
+
+    # sys.stdout.buffer.write(command.stdout)
+    # sys.stderr.buffer.write(command.stderr)
+    # sys.exit(command.returncode)
+
+def run():
+    l = get_containers('/home/rainsong/Projects/database/docker-compose.yml')
+    print(l)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('operation', type=str,
+                    choices=['status'],
+                    help='operation')
+    args = parser.parse_args()
+
+    result = None
+    if args.operation == 'status':
+        result = check_status('/home/rainsong/Projects/database/docker-compose.yml')
+
+    result = '🐳 up' if result == True else '🐳 dwn'
+    print(result)
