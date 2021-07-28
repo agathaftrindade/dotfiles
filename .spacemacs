@@ -68,7 +68,9 @@ This function should only modify configuration layer settings."
      sql
      yaml
 
-     org
+     (org :variables
+          org-enable-roam-support t
+          )
      markdown
      )
 
@@ -250,9 +252,9 @@ It should only modify the values of Spacemacs settings."
    ;; `vanilla' is default Emacs mode-line. `custom' is a user defined themes,
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
-   ;; (default '(spacemacs :separator arrow :separator-scale 1.5))
-   ;; dotspacemacs-mode-line-theme '(spacemacs :separator arrow :separator-scale 1.5)
-   dotspacemacs-mode-line-theme '(vim-powerline :separator-scale 1.5)
+   ;; (default '(spacemacs :separator wave :separator-scale 1.5))
+   dotspacemacs-mode-line-theme '(spacemacs :separator arrow :separator-scale 1.6)
+   ;; dotspacemacs-mode-line-theme '(vim-powerline :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
@@ -554,6 +556,9 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+
+  (setq org-roam-directory "~/org")
+
   )
 
 
@@ -571,12 +576,16 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-
   (spacemacs/set-leader-keys "\\" 'helm-mini)
   (spacemacs/set-leader-keys "\`"'helm-mini)
   (spacemacs/set-leader-keys "<tab>" 'spacemacs/alternate-window)
   (spacemacs/set-leader-keys "-" 'spacemacs/alternate-buffer)
 
+  (spacemacs/declare-prefix "o" "Roam")
+  (spacemacs/set-leader-keys "of" 'org-roam-node-find)
+  (spacemacs/set-leader-keys "oi" 'org-roam-node-insert)
+  (spacemacs/set-leader-keys "oc" 'org-roam-capture)
+  (spacemacs/set-leader-keys "or" 'org-roam-db-sync)
 )
 
 
