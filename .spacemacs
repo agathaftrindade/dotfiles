@@ -42,6 +42,9 @@ This function should only modify configuration layer settings."
 
      emacs-lisp
      treemacs
+     (treemacs :variables
+               treemacs-sorting 'alphabetic-asc
+               )
      helm
      lsp
      git
@@ -557,6 +560,7 @@ configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
+  (setq org-roam-v2-ack t)
   (setq org-roam-directory "~/org")
 
   )
@@ -576,16 +580,31 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (spacemacs/set-leader-keys "\\" 'helm-mini)
+
+  ;; keybindings
+
   (spacemacs/set-leader-keys "\`"'helm-mini)
   (spacemacs/set-leader-keys "<tab>" 'spacemacs/alternate-window)
   (spacemacs/set-leader-keys "-" 'spacemacs/alternate-buffer)
+
+  (spacemacs/set-leader-keys "bH" 'spacemacs/home)
+  (spacemacs/set-leader-keys "bl" 'next-buffer)
+  (spacemacs/set-leader-keys "bh" 'previous-buffer)
 
   (spacemacs/declare-prefix "o" "Roam")
   (spacemacs/set-leader-keys "of" 'org-roam-node-find)
   (spacemacs/set-leader-keys "oi" 'org-roam-node-insert)
   (spacemacs/set-leader-keys "oc" 'org-roam-capture)
   (spacemacs/set-leader-keys "or" 'org-roam-db-sync)
+
+  (define-key evil-normal-state-map "Q" #'mark-whole-buffer)
+
+  ;; setup
+  (org-roam-setup)
+
+  ;; (org-babel-do-load-languages
+  ;;  'org-babel-load-languages
+  ;;  '((python . t)))
 )
 
 
