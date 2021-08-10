@@ -51,9 +51,9 @@ This function should only modify configuration layer settings."
 
      ;; multiple-cursors
 
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
      ;; spell-checking
 
      auto-completion
@@ -255,13 +255,13 @@ It should only modify the values of Spacemacs settings."
    ;; `vanilla' is default Emacs mode-line. `custom' is a user defined themes,
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
-   ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs :separator arrow :separator-scale 1.6)
+   ;; (default '(spacemacs :separator arrow :separator-scale 1.5))
+   dotspacemacs-mode-line-theme '(spacemacs :separator arrow :separator-scale 1.7)
    ;; dotspacemacs-mode-line-theme '(vim-powerline :separator-scale 1.5)
 
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
-   ;; dotspacemacs-colorize-cursor-according-to-state t
+   dotspacemacs-colorize-cursor-according-to-state t
 
    ;; Default font or prioritized list of fonts. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
@@ -561,7 +561,7 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
   (setq org-roam-v2-ack t)
-  (setq org-roam-directory "~/org")
+  (setq org-roam-directory "~/org/")
 
   )
 
@@ -581,6 +581,28 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
+  (add-hook 'yas-minor-mode-hook (lambda () (yas-activate-extra-mode 'fundamental-mode)))
+
+  ;; Custom Functions
+  (setq personal-journal-dir (concat org-roam-directory "org-personal/journal/")
+        work-journal-dir (concat org-roam-directory "journal/"))
+
+  (defun custom/current-month-journal-file (&optional prefix)
+    (concat prefix (downcase (format-time-string "journal-%Y-%B.org")))
+    )
+
+  (defun custom/find-current-month-personal-journal ()
+    "Open this month's personal diary file"
+    (interactive)
+    (find-file-existing (concat personal-journal-dir (custom/current-month-journal-file)))
+    )
+
+  (defun custom/find-current-month-work-journal ()
+    "Open this month's work diary file"
+    (interactive)
+    (find-file-existing (concat work-journal-dir (custom/current-month-journal-file "w")))
+    )
+
   ;; keybindings
 
   (spacemacs/set-leader-keys "\`"'helm-mini)
@@ -596,6 +618,10 @@ before packages are loaded."
   (spacemacs/set-leader-keys "oi" 'org-roam-node-insert)
   (spacemacs/set-leader-keys "oc" 'org-roam-capture)
   (spacemacs/set-leader-keys "or" 'org-roam-db-sync)
+  (spacemacs/set-leader-keys "ot" 'org-roam-buffer)
+  (spacemacs/set-leader-keys "oT" 'org-roam-buffer-toggle)
+  (spacemacs/set-leader-keys "om" 'custom/find-current-month-personal-journal)
+  (spacemacs/set-leader-keys "on" 'custom/find-current-month-work-journal)
 
   (define-key evil-normal-state-map "Q" #'mark-whole-buffer)
 
