@@ -2,6 +2,8 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+(load "~/dotfiles/cosmic-lisp/cosmic-setup.el")
+
 (defun dotspacemacs/layers ()
   "Layer configuration:
 This function should only modify configuration layer settings."
@@ -43,8 +45,9 @@ This function should only modify configuration layer settings."
      emacs-lisp
      treemacs
      (treemacs :variables
-               treemacs-sorting 'alphabetic-asc
-               )
+        treemacs-sorting #'natural-sort
+        ;; treemacs-sorting 'alphabetic-asc
+     )
      helm
      lsp
      git
@@ -581,56 +584,9 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 
-  (add-hook 'yas-minor-mode-hook (lambda () (yas-activate-extra-mode 'fundamental-mode)))
-
-  ;; Custom Functions
-  (setq personal-journal-dir (concat org-roam-directory "org-personal/journal/")
-        work-journal-dir (concat org-roam-directory "journal/"))
-
-  (defun custom/current-month-journal-file (&optional prefix)
-    (concat prefix (downcase (format-time-string "journal-%Y-%B.org")))
-    )
-
-  (defun custom/find-current-month-personal-journal ()
-    "Open this month's personal diary file"
-    (interactive)
-    (find-file-existing (concat personal-journal-dir (custom/current-month-journal-file)))
-    )
-
-  (defun custom/find-current-month-work-journal ()
-    "Open this month's work diary file"
-    (interactive)
-    (find-file-existing (concat work-journal-dir (custom/current-month-journal-file "w")))
-    )
-
-  ;; keybindings
-
-  (spacemacs/set-leader-keys "\`"'helm-mini)
-  (spacemacs/set-leader-keys "<tab>" 'spacemacs/alternate-window)
-  (spacemacs/set-leader-keys "-" 'spacemacs/alternate-buffer)
-
-  (spacemacs/set-leader-keys "bH" 'spacemacs/home)
-  (spacemacs/set-leader-keys "bl" 'next-buffer)
-  (spacemacs/set-leader-keys "bh" 'previous-buffer)
-
-  (spacemacs/declare-prefix "o" "Roam")
-  (spacemacs/set-leader-keys "of" 'org-roam-node-find)
-  (spacemacs/set-leader-keys "oi" 'org-roam-node-insert)
-  (spacemacs/set-leader-keys "oc" 'org-roam-capture)
-  (spacemacs/set-leader-keys "or" 'org-roam-db-sync)
-  (spacemacs/set-leader-keys "ot" 'org-roam-buffer)
-  (spacemacs/set-leader-keys "oT" 'org-roam-buffer-toggle)
-  (spacemacs/set-leader-keys "om" 'custom/find-current-month-personal-journal)
-  (spacemacs/set-leader-keys "on" 'custom/find-current-month-work-journal)
-
-  (define-key evil-normal-state-map "Q" #'mark-whole-buffer)
-
   ;; setup
-  (org-roam-setup)
+  (cosmic-setup)
 
-  ;; (org-babel-do-load-languages
-  ;;  'org-babel-load-languages
-  ;;  '((python . t)))
 )
 
 
