@@ -1,8 +1,5 @@
-export TERM=terminator
-export EDITOR=vim
+export TERM=kitty
 export TERMINAL=$TERM
-export BROWSER=firefox
+export EDITOR=vim
 export PATH=$HOME/bin:$PATH
-export TTRSS_URL=
-export TTRSS_LOGIN=
-export TTRSS_PASSWORD=
+export PATH=$HOME/bin:$PATH

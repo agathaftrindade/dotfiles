@@ -70,12 +70,6 @@ setopt appendhistory autocd extendedglob
 unsetopt beep nomatch
 #bindkey -v
 # End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/pop_os/rainsong/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
 
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 

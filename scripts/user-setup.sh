@@ -18,37 +18,31 @@ if ! [ -x "$(command -v zsh)" ]; then
   exit 1
 fi
 
-# Install ohmyzsh
+echo Installing tools
+brew bundle
+
+echo Installing omz
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    $DOTFILES/scripts/install/install-omz.sh
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-# Install Spacemacs
-if [ ! -d "$HOME/.emacs.d" ]; then
-  git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-fi
-
-# Wallpaper
-if [ ! -e "$HOME/.fehbg" ]; then
-  feh --bg-fill $DOTFILES/wallpaper.jpg
-fi
-
-
-mkdir ~/.config
-mkdir ~/bin
-
-cp $DOTFILES/bin/*  $HOME/bin/
+mkdir $HOME/bin
+mkdir $HOME/config
+mkdir $HOME/.config/kitty/themes
+mkdir $HOME/.config/kitty/themes
 
 safe_cp .zshrc
 safe_cp .zshenv
-#safe_cp .xinitrc
-safe_link .spacemacs
-safe_link .zshrc
-#safe_link .config/i3
-#safe_link .config/i3blocks
-#safe_link .config/polybar
-#safe_link .config/dunst
-safe_link .config/ranger
-#safe_link .config/newsboat
-#safe_link .config/gtk-3.0
-#safe_link .config/compton.conf
+
+echo Configuring Emacs
+rm -rf $HOME/.emacs.d $HOME/.emacs
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
+#ln -fns $PWD/emacs-init.el $HOME/.config/doom/init.el
+#ln -fns $PWD/emacs-config.el $HOME/.config/doom/config.el
+#ln -fns $PWD/emacs-packages.el $HOME/.config/doom/packages.el
+mkdir $HOME/.config/doom/themes
+#ln -fns $PWD/doom-anne-pastel-theme.el $HOME/.config/doom/themes/doom-anne-pastel-theme.el
+
+doom sync -u
+
