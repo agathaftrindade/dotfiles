@@ -75,22 +75,58 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; (setq doom-localleader-key ",")
+
+(setq read-process-output-max (* 1024 1024)
+       ;; doom-font (font-spec :family "Fira Code" :size 14) which would help you to change the font and size.
+       projectile-project-search-path '("~/dev/nu")
+       projectile-enable-caching nil)
+
 (map! :map evil-normal-state-map
       "Q" #'mark-whole-buffer
-      "`" #'+vertico/switch-workspace-buffer
  )
 
 (map! :leader
         doom-leader-key  #'execute-extended-command
+        "`" #'+vertico/switch-workspace-buffer
+        "TAB" #'other-window
+        "'" #'comment-line
       )
 
 (map! :leader
-        "c ;"  #'comment-line
+        "c '"  #'comment-line
       )
 
-(map! :leader
-        "b h"  #'next-buffer
+(map! :leader :map evil-normal-state-map
+        "b h"  #'previous-buffer
         "b l"  #'next-buffer
         "b s"  #'doom/switch-to-scratch-buffer
         "b S"  #'doom/open-scratch-buffer
       )
+
+
+
+
+(defun +my-centaur-tabs-buffers ()
+  (seq-filter (lambda (b)
+                (cond ((eq (current-buffer) b) b)
+                      ((doom-temp-buffer-p b) nil)
+                      ((doom-unreal-buffer-p b) nil)
+                      ((buffer-file-name b) b)
+                      ((buffer-live-p b) b)))
+              (+workspace-buffer-list))
+  )
+
+(defun +my-centaur-tabs-groups ()
+  (list "Common"))
+
+(after! centaur-tabs
+        (setq centaur-tabs-style "bar")
+        (setq centaur-tabs-buffer-list-function #'+my-centaur-tabs-buffers)
+        (setq centaur-tabs-buffer-groups-function #'+my-centaur-tabs-groups)
+        )
+
+(defadvice! fix-lookup-handlers (ret)
+  :filter-return '(+lsp-lookup-references-handler +lsp-lookup-definition-handler)
+  (when ret 'deferred))
+
