@@ -74,25 +74,29 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; ======== General Config ========
+
 (setq doom-localleader-key ",")
 
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(select-frame-set-input-focus (selected-frame))
 
 (setq doom-theme 'fae-floss)
 
 (setq doom-fae-floss-brighter-modeline nil
-        doom-fae-floss-brighter-comments nil
-        doom-fae-floss-comment-bg nil)
+      doom-fae-floss-brighter-comments nil
+      doom-fae-floss-comment-bg nil)
 
 
 (setq read-process-output-max (* 1024 1024)
        ;; doom-font (font-spec :family "Fira Code" :size 14) which would help you to change the font and size.
-       projectile-project-search-path '("~/dev/nu")
+       projectile-project-search-path '("~/dev/nu" "~/projects")
        projectile-enable-caching nil)
+
+;; ======== Keybindings ========
 
 (map! :map evil-normal-state-map
       "Q" #'mark-whole-buffer)
-
 
 (map! :leader
         doom-leader-key  #'execute-extended-command
@@ -103,10 +107,8 @@
         "h" #'+tabs:previous-or-goto
         "l" #'+tabs:next-or-goto)
 
-
 (map! :leader
         "c '"  #'comment-line)
-
 
 (map! :leader :map evil-normal-state-map
         "b h"  #'previous-buffer
@@ -114,6 +116,16 @@
         "b s"  #'doom/switch-to-scratch-buffer
         "b S"  #'doom/open-scratch-buffer)
 
+;; ======== Packages config ========
+
+(use-package! lsp-mode
+  :commands lsp
+  :config
+  (setq lsp-semantic-tokens-enable t)
+  (add-hook 'lsp-after-apply-edits-hook (lambda (&rest _) (save-buffer)))) ;; save buffers after renaming
+
+(after! treemacs
+  (treemacs-follow-mode))
 
 (defun +my-centaur-tabs-buffers ()
   (seq-filter (lambda (b)
@@ -137,17 +149,6 @@
 
         (centaur-tabs-headline-match))
 
-(after! treemacs)
-  ;; (treemacs-follow-mode))
-
-
 ;; (centaur-tabs-change-fonts "Roboto" 160)
-
-
-(use-package! lsp-mode
-  :commands lsp
-  :config
-  (setq lsp-semantic-tokens-enable t)
-  (add-hook 'lsp-after-apply-edits-hook (lambda (&rest _) (save-buffer)))) ;; save buffers after renaming
 
 ;; (add-hook 'clojure-mode-hook #'cider-mode)
